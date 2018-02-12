@@ -1,6 +1,6 @@
 env:
   global:
-    - CC_TEST_REPORTER_ID=4352b85cfdeae4ff88b0f04a54f17e0c20ea4895d719787e63170f9d0eb90c64
+  - CC_TEST_REPORTER_ID=4352b85cfdeae4ff88b0f04a54f17e0c20ea4895d719787e63170f9d0eb90c64
 email:
   recipients:
   - davenicolette@gmail.com
@@ -10,9 +10,10 @@ language: ruby
 rvm:
 - 2.3.1
 before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+  > ./cc-test-reporter
+- chmod +x ./cc-test-reporter
+- "./cc-test-reporter before-build"
 branches:
   only: master
 install:
@@ -23,9 +24,9 @@ script:
 - rake integration
 - kill `cat rackup.pid`
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+- "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
 deploy:
   provider: heroku
   app: playservice
   api_key:
-    secure: AC/iZDWtKhVFMCJ/GFZVq3wO4CXAstzHxHs/VtpK7KodPbFCfMcmuuUHf1AdQhKbiUMXoX6hO9oBMGXADEk3QAZUDpF35kOK9w83Nlh5dZFTFMMcwvMjGDBt+ycFfjwB7tDUTcLioxc7ZfcN5+IkeA2xRJ1HNJEVJPhh64hQ+bouosW+TjEVk8H2xtBdyG3Mk2WcmdxP81qYuSk5Esdtg7cD7jIbhzmF6pGCUO3ZMq/DAC+h0ZQ77ieovZm3UVsov8j5QZtoFEqZFzcrg0Ly3ia/Z0JMChF1Gx3tXIQ9roSYpEyhIVriDJiFsEaEAJNm/oEO24qvPZYZTEVSaS+g3Amannbbp6wBQoteXg6kGsO1gjlWlQ/wT23Xs9puhYBzU152v7Y3rI47CVz3rYfURbezrhart+XV1R5OCgx06611ahFE5X6006WnmDSZ89d12K6KbKVGgP863js14e+PWlRIaBM365WSsnms6cehpyfLIu7r8AZxHGZUsQ+gMvCFV/nzs7I7KLwdug9DFZL2iY9rITo9ZKpy/MCrETSB3VdP+/68YKAGwP3/RHjHIxDAFmnH2w0w/VkCMvQPgnFT0imC0CnSvMjTjoqyJ8TXIw3y0tpW3hc7W+CyqPovZceiEp0+0LfHillQm8VQCse1qCjbxOsC44mw62UvfS9GT+Q=
+    secure: KDQ3hXKm6OHCAYhrfctgeCwuMvw9XDSHktVANTb+NfSxCBrIQ+iCrw1tkTGnCTSSIswBCRTQqQRi5ftm42KHpRi+WPYuDjKTOQD0HelHkCjJHSPE93ijHX0RfZQjdtTAt2kzK8RIP8jU5YOe9rwA8+AXKXf7IrjWTQi7zzIvyQ2YIt5ylZ1oa+FJtFepI8MERuolsfnq7gn1ZhbMy/K56+dlk4dsQ9fO23xTGoLgbDM4RRPdO9KwT8U8H+9QPCA5VC4y3l+wLZ1VFZQxEyHVOMSGDco7PUtn2rF1sjzZALXgtkiLEReb7J2z1bQpfmWKKTLpa/tikRLBQNyfuhBjpYForinWeuVCjf625ywmiwMe9zXdJPv1vBG1QaOsahIy6rnoF2AANn56PjrAU9uJSENXQvwERbMR2HIKxKK+/JvhjC2InpMzZFxxhKbjSyt5g3O1NWUldkFeE4MVVlAHNKZvPoiXVUdP5QkEufnDA1Jfai1Vtmz+Aw1Sre9dzL3nFVt84BoYb7cDvwhsmR2vTq2YL8xb0JyjTI62JmL2brvA8kNzQ1wZ6ljLJ3ecWIaopIzVCVN06l7UMV4e5jVCKLpmW2scVLMbnmVM3AdyLu3WjShtPdot1pchgRA5tspXuaweb/DxALMUuyb6jiTp9JdZ1E+iJBQfrKtVThsgsRY=
