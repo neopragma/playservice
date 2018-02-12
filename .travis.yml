@@ -1,12 +1,18 @@
-notifications:
-  email:
-    recipients:
-    - davenicolette@gmail.com
-    on_success: change
-    on_failure: change
+env:
+  global:
+    - CC_TEST_REPORTER_ID=4352b85cfdeae4ff88b0f04a54f17e0c20ea4895d719787e63170f9d0eb90c64
+email:
+  recipients:
+  - davenicolette@gmail.com
+  on_success: change
+  on_failure: change
 language: ruby
 rvm:
 - 2.3.1
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 branches:
   only: master
 install:
@@ -16,3 +22,5 @@ script:
 - rackup -P rackup.pid -p 4567 -o 0.0.0.0 &
 - rake integration
 - kill `cat rackup.pid`
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
