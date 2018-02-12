@@ -15,4 +15,4 @@ script:
 - export PLAY_URL=http://0.0.0.0:4567
 - rackup -p 4567 -o 0.0.0.0
 - rake integration
-- kill `cat playservice.pid`
+- kill `cat rackup.pid`
